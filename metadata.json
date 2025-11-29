@@ -1,0 +1,5 @@
+{
+  "name": "Etsy Design Optimizer",
+  "description": "An internal tool to analyze a digital flyer, then automatically generate Etsy-ready thumbnails, infographics, titles, descriptions, and tags to streamline the product listing process.",
+  "requestFramePermissions": []
+}
