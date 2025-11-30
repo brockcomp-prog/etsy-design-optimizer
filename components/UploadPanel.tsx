@@ -72,11 +72,11 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
   const isLoading = isAnalyzing || isGenerating;
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md space-y-6 sticky top-6">
+    <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg space-y-6 sticky top-24 border border-gray-100">
       <div>
         <h2 className="text-lg font-semibold text-gray-800 mb-3">1. Upload Flyers</h2>
         <div
-          className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-indigo-500 transition-colors"
+          className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center cursor-pointer hover:border-coral transition-all duration-300 hover:bg-coral/5" style={{borderColor: '#e5e7eb'}} onMouseOver={(e)=>e.currentTarget.style.borderColor='#FF6B6B'} onMouseOut={(e)=>e.currentTarget.style.borderColor='#e5e7eb'}
           onClick={() => fileInputRef.current?.click()}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
@@ -93,7 +93,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
           />
           <UploadCloudIcon className="mx-auto" />
           <p className="mt-2 text-sm text-gray-600">
-            <span className="font-semibold text-indigo-600">Click to upload</span> or drag and drop
+            <span className="font-semibold text-coral">Click to upload</span> or drag and drop
           </p>
           <p className="text-xs text-gray-500">PNG or JPG (up to {MAX_FILES})</p>
         </div>
@@ -124,7 +124,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
         <button
           onClick={!analysisResult ? onAnalyze : onGenerate}
           disabled={!analysisResult ? !canAnalyze : !canGenerate}
-          className="w-full h-10 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          className="w-full h-11 inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-sm font-semibold rounded-xl shadow-lg text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100" style={{background: 'linear-gradient(135deg, #FF6B6B 0%, #FFB347 100%)'}}
         >
           {isLoading ? <Spinner /> : <GenerateIcon className="mr-2"/>}
           {isAnalyzing ? 'Analyzing...' : (isGenerating ? 'Generating...' : (!analysisResult ? 'Analyze Flyer' : 'Generate Assets'))}
@@ -145,7 +145,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
                 type="text"
                 value={analysisResult.theme}
                 onChange={(e) => onAnalysisChange('theme', e.target.value)}
-                className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-white focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-white focus:ring-coral focus:border-coral disabled:bg-gray-100 disabled:cursor-not-allowed"
                 disabled={isLoading}
               />
             </div>
@@ -155,7 +155,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
                 id="analysis-product-type"
                 value={analysisResult.productType}
                 onChange={(e) => onAnalysisChange('productType', e.target.value)}
-                className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-white focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-white focus:ring-coral focus:border-coral disabled:bg-gray-100 disabled:cursor-not-allowed"
                 disabled={isLoading}
                 aria-label="Select Product Type"
               >
@@ -176,7 +176,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
                 type="text"
                 value={analysisResult.eventType}
                 onChange={(e) => onAnalysisChange('eventType', e.target.value)}
-                className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-white focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-white focus:ring-coral focus:border-coral disabled:bg-gray-100 disabled:cursor-not-allowed"
                 disabled={isLoading}
               />
             </div>
@@ -186,7 +186,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
                 id="analysis-key-text"
                 value={analysisResult.keyText.join(', ')}
                 onChange={(e) => onAnalysisChange('keyText', e.target.value.split(',').map(s => s.trim()).filter(Boolean))}
-                className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-white focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-white focus:ring-coral focus:border-coral disabled:bg-gray-100 disabled:cursor-not-allowed"
                 disabled={isLoading}
                 rows={3}
               />

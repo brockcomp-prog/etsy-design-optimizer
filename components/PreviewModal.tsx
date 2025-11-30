@@ -31,7 +31,7 @@ export const PreviewModal: React.FC<PreviewModalProps> = ({ image, onClose }) =>
       aria-labelledby="image-preview-title"
     >
       <div
-        className="relative bg-white p-2 rounded-lg shadow-2xl max-w-4xl max-h-[90vh] w-full"
+        className="relative bg-white/95 backdrop-blur-xl p-3 rounded-2xl shadow-2xl max-w-4xl max-h-[90vh] w-full border border-gray-100"
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on the image/container
       >
         <div className="flex justify-between items-center pb-2 px-2">

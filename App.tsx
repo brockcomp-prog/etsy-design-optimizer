@@ -283,15 +283,15 @@ export default function App() {
   const hasResults = generatedImages.length > 0 || copyResult;
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
-      <header className="bg-white shadow-sm">
+    <div className="min-h-screen font-sans" style={{background: 'linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 50%, #F0FFFF 100%)'}}>
+      <header className="bg-white/80 backdrop-blur-lg border-b border-gray-100 sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-900">Etsy Design Optimizer</h1>
+          <div className="flex items-center gap-3"><div className="w-11 h-11 rounded-xl flex items-center justify-center shadow-lg" style={{background: 'linear-gradient(135deg, #FF6B6B 0%, #FFB347 100%)'}}><svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg></div><h1 className="text-2xl font-bold" style={{background: 'linear-gradient(135deg, #FF6B6B 0%, #F5A623 50%, #20B2AA 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}>Etsy Design Optimizer</h1></div>
           {hasResults && (
             <button
                 onClick={handleDownloadAll}
                 disabled={isGenerating && generatedImages.some(i => i.status === 'pending')}
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="inline-flex items-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-xl shadow-lg text-white transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100" style={{background: 'linear-gradient(135deg, #20B2AA 0%, #00D9A5 100%)'}}
             >
                 <DownloadIcon className="mr-2" />
                 Download All as ZIP
@@ -302,7 +302,7 @@ export default function App() {
       
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         {error && (
-            <div className="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <div className="mb-4 px-4 py-3 rounded-xl relative" style={{backgroundColor: 'rgba(255, 107, 107, 0.1)', border: '1px solid #FF6B6B', color: '#E85555'}} role="alert">
                 <strong className="font-bold">Error: </strong>
                 <span className="block sm:inline">{error}</span>
             </div>
