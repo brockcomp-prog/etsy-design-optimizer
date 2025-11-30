@@ -74,7 +74,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
   return (
     <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg space-y-6 sticky top-24 border border-gray-100">
       <div>
-        <h2 className="text-lg font-semibold text-gray-800 mb-3">1. Upload Flyers</h2>
+        <h2 className="text-lg font-semibold text-gray-800 mb-3">1. Upload designs</h2>
         <div
           className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center cursor-pointer hover:border-coral transition-all duration-300 hover:bg-coral/5" style={{borderColor: '#e5e7eb'}} onMouseOver={(e)=>e.currentTarget.style.borderColor='#FF6B6B'} onMouseOut={(e)=>e.currentTarget.style.borderColor='#e5e7eb'}
           onClick={() => fileInputRef.current?.click()}
@@ -105,7 +105,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
           <div className="grid grid-cols-3 gap-2">
             {previewUrls.map((url, index) => (
               <div key={index} className="relative group aspect-square">
-                <img src={url} alt={`Flyer preview ${index + 1}`} className="rounded-md w-full h-full object-cover" />
+                <img src={url} alt={`design preview ${index + 1}`} className="rounded-md w-full h-full object-cover" />
                 <button
                     onClick={() => onFileRemove(index)}
                     className="absolute top-1 right-1 bg-black bg-opacity-50 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100"
@@ -120,14 +120,14 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({
       )}
 
       <div>
-        <h2 className="text-lg font-semibold text-gray-800 mb-3">{!analysisResult ? '2. Analyze Flyer' : '3. Generate Assets'}</h2>
+        <h2 className="text-lg font-semibold text-gray-800 mb-3">{!analysisResult ? '2. Analyze design' : '3. Generate Assets'}</h2>
         <button
           onClick={!analysisResult ? onAnalyze : onGenerate}
           disabled={!analysisResult ? !canAnalyze : !canGenerate}
           className="w-full h-11 inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-sm font-semibold rounded-xl shadow-lg text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100" style={{background: 'linear-gradient(135deg, #FF6B6B 0%, #FFB347 100%)'}}
         >
           {isLoading ? <Spinner /> : <GenerateIcon className="mr-2"/>}
-          {isAnalyzing ? 'Analyzing...' : (isGenerating ? 'Generating...' : (!analysisResult ? 'Analyze Flyer' : 'Generate Assets'))}
+          {isAnalyzing ? 'Analyzing...' : (isGenerating ? 'Generating...' : (!analysisResult ? 'Analyze design' : 'Generate Assets'))}
         </button>
         {isLoading && loadingMessage && (
             <p className="text-xs text-gray-600 text-center mt-2 animate-pulse">{loadingMessage}</p>

@@ -91,7 +91,7 @@ export default function App() {
 
   const handleAnalyze = useCallback(async () => {
     if (uploadedFiles.length === 0) {
-      setError('Please upload at least one flyer image.');
+      setError('Please upload at least one design image.');
       return;
     }
     
@@ -100,7 +100,7 @@ export default function App() {
     resetResults();
     
     try {
-      setLoadingMessage('Analyzing flyer theme...');
+      setLoadingMessage('Analyzing design theme...');
       const base64Images = await Promise.all(uploadedFiles.map(fileToB64));
       const analysis = await analyzeImages(base64Images);
       setAnalysisResult(analysis);
@@ -115,7 +115,7 @@ export default function App() {
 
   const handleGenerateAssets = useCallback(async () => {
     if (!analysisResult) {
-      setError('Please analyze a flyer before generating assets.');
+      setError('Please analyze a design before generating assets.');
       return;
     }
 
