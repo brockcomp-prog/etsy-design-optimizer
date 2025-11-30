@@ -92,8 +92,8 @@ export const upgradeToPlan = (plan: 'pro' | 'lifetime', email?: string): void =>
 // Pro: https://etsy-design-optimizer.vercel.app/?plan=pro
 // Lifetime: https://etsy-design-optimizer.vercel.app/?plan=lifetime
 export const STRIPE_LINKS = {
-  pro: 'https://buy.stripe.com/fZu9AM6slaOA3h27Oo3gk02',
-  lifetime: 'https://buy.stripe.com/9B6fZa8AtcWIeZKfgQ3gk01'
+  pro: 'https://buy.stripe.com/9B6fZa8AtcWIeZKfgQ3gk01',
+  lifetime: 'https://buy.stripe.com/fZu9AM6slaOA3h27Oo3gk02'
 };
 
 // Stripe is now configured and ready
