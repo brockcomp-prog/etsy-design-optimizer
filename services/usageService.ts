@@ -78,6 +78,22 @@ export const isPremium = (): boolean => {
   return state.plan === 'pro' || state.plan === 'lifetime';
 };
 
+export const hasEmail = (): boolean => {
+  const state = getUserState();
+  return !!state.email;
+};
+
+export const getEmail = (): string | undefined => {
+  const state = getUserState();
+  return state.email;
+};
+
+export const setEmail = (email: string): void => {
+  const state = getUserState();
+  state.email = email;
+  saveUserState(state);
+};
+
 export const upgradeToPlan = (plan: 'pro' | 'lifetime', email?: string): void => {
   const state = getUserState();
   state.plan = plan;

@@ -9,7 +9,8 @@ import { PricingModal } from './components/PricingModal';
 import { SuccessPage } from './components/SuccessPage';
 import type { AnalysisResult, CopyResult, GeneratedImage } from './types';
 import { analyzeImages, generateCopy, generateMockup, generateMockupPrompts } from './services/geminiService';
-import { getUserState, canGenerate, incrementUsage, getRemainingGenerations, isPremium } from './services/usageService';
+import { getUserState, canGenerate, incrementUsage, getRemainingGenerations, isPremium, hasEmail, setEmail } from './services/usageService';
+import { EmailCaptureModal } from './components/EmailCaptureModal';
 import { addWatermark } from './services/watermarkService';
 import { DownloadIcon, CrownIcon } from './components/icons';
 
@@ -22,6 +23,7 @@ export default function App() {
   const [showApp, setShowApp] = useState<boolean>(false);
   const [showSuccessPage, setShowSuccessPage] = useState<boolean>(false);
   const [showPricingModal, setShowPricingModal] = useState<boolean>(false);
+  const [showEmailModal, setShowEmailModal] = useState<boolean>(false);
   const [pricingReason, setPricingReason] = useState<'limit_reached' | 'remove_watermark' | 'upgrade'>('upgrade');
   const [remainingGenerations, setRemainingGenerations] = useState<number>(getRemainingGenerations());
 
@@ -149,9 +151,20 @@ export default function App() {
     }
   }, [uploadedFiles]);
 
+  const handleEmailSubmit = (email: string) => {
+    setEmail(email);
+    setShowEmailModal(false);
+  };
+
   const handleGenerateAssets = useCallback(async () => {
     if (!analysisResult) {
       setError('Please analyze a design before generating assets.');
+      return;
+    }
+
+    // Require email before first generation
+    if (!hasEmail()) {
+      setShowEmailModal(true);
       return;
     }
 
@@ -499,6 +512,12 @@ export default function App() {
         isOpen={showPricingModal}
         onClose={() => setShowPricingModal(false)}
         reason={pricingReason}
+      />
+
+      <EmailCaptureModal
+        isOpen={showEmailModal}
+        onSubmit={handleEmailSubmit}
+        onClose={() => setShowEmailModal(false)}
       />
     </div>
   );
